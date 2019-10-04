@@ -1,8 +1,12 @@
 cmake_minimum_required(VERSION 2.8.3)
+<<<<<<< HEAD
 project(pimouse_ros)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
+=======
+project(raspimouse_ros)
+>>>>>>> origin/master
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -10,6 +14,11 @@ project(pimouse_ros)
 find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
+<<<<<<< HEAD
+=======
+  message_generation
+  actionlib_msgs
+>>>>>>> origin/master
 )
 
 ## System dependencies are found with CMake's conventions
@@ -31,10 +40,17 @@ find_package(catkin REQUIRED COMPONENTS
 ##   your messages/services/actions (e.g. std_msgs, actionlib_msgs, ...).
 ## * In the file package.xml:
 ##   * add a build_depend tag for "message_generation"
+<<<<<<< HEAD
 ##   * add a build_depend and a exec_depend tag for each package in MSG_DEP_SET
 ##   * If MSG_DEP_SET isn't empty the following dependency has been pulled in
 ##     but can be declared for certainty nonetheless:
 ##     * add a exec_depend tag for "message_runtime"
+=======
+##   * add a build_depend and a run_depend tag for each package in MSG_DEP_SET
+##   * If MSG_DEP_SET isn't empty the following dependency has been pulled in
+##     but can be declared for certainty nonetheless:
+##     * add a run_depend tag for "message_runtime"
+>>>>>>> origin/master
 ## * In this file (CMakeLists.txt):
 ##   * add "message_generation" and every package in MSG_DEP_SET to
 ##     find_package(catkin REQUIRED COMPONENTS ...)
@@ -46,6 +62,7 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
+<<<<<<< HEAD
 # add_message_files(
 #   FILES
 #   Message1.msg
@@ -71,6 +88,34 @@ find_package(catkin REQUIRED COMPONENTS
 #   DEPENDENCIES
 #   std_msgs
 # )
+=======
+add_message_files(
+  FILES
+  LightSensorValues.msg
+  Switches.msg
+  MotorFreqs.msg
+)
+
+# Generate services in the 'srv' folder
+add_service_files(
+  FILES
+  PutMotorFreqs.srv
+  SwitchMotors.srv
+)
+
+## Generate actions in the 'action' folder
+add_action_files(
+   FILES
+   Music.action
+ )
+
+# Generate added messages and services with any dependencies listed here
+generate_messages(
+  DEPENDENCIES
+  actionlib_msgs
+  std_msgs
+)
+>>>>>>> origin/master
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -79,7 +124,11 @@ find_package(catkin REQUIRED COMPONENTS
 ## To declare and build dynamic reconfigure parameters within this
 ## package, follow these steps:
 ## * In the file package.xml:
+<<<<<<< HEAD
 ##   * add a build_depend and a exec_depend tag for "dynamic_reconfigure"
+=======
+##   * add a build_depend and a run_depend tag for "dynamic_reconfigure"
+>>>>>>> origin/master
 ## * In this file (CMakeLists.txt):
 ##   * add "dynamic_reconfigure" to
 ##     find_package(catkin REQUIRED COMPONENTS ...)
@@ -97,14 +146,24 @@ find_package(catkin REQUIRED COMPONENTS
 ###################################
 ## The catkin_package macro generates cmake config files for your package
 ## Declare things to be passed to dependent projects
+<<<<<<< HEAD
 ## INCLUDE_DIRS: uncomment this if your package contains header files
+=======
+## INCLUDE_DIRS: uncomment this if you package contains header files
+>>>>>>> origin/master
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
+<<<<<<< HEAD
 #  LIBRARIES pimouse_ros
 #  CATKIN_DEPENDS rospy std_msgs
+=======
+#  LIBRARIES raspimouse_ros
+#  CATKIN_DEPENDS rospy std_msgs
+   CATKIN_DEPENDS actionlib_msgs
+>>>>>>> origin/master
 #  DEPENDS system_lib
 )
 
@@ -114,19 +173,30 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
+<<<<<<< HEAD
 include_directories(
 # include
+=======
+# include_directories(include)
+include_directories(
+>>>>>>> origin/master
   ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
+<<<<<<< HEAD
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/pimouse_ros.cpp
+=======
+# add_library(raspimouse_ros
+#   src/${PROJECT_NAME}/raspimouse_ros.cpp
+>>>>>>> origin/master
 # )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
+<<<<<<< HEAD
 # add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
@@ -146,6 +216,19 @@ include_directories(
 
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(${PROJECT_NAME}_node
+=======
+# add_dependencies(raspimouse_ros ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+## Declare a C++ executable
+# add_executable(raspimouse_ros_node src/raspimouse_ros_node.cpp)
+
+## Add cmake target dependencies of the executable
+## same as for the library above
+# add_dependencies(raspimouse_ros_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+## Specify libraries to link a library or executable target against
+# target_link_libraries(raspimouse_ros_node
+>>>>>>> origin/master
 #   ${catkin_LIBRARIES}
 # )
 
@@ -163,6 +246,7 @@ include_directories(
 #   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 # )
 
+<<<<<<< HEAD
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
 # install(TARGETS ${PROJECT_NAME}_node
@@ -175,6 +259,13 @@ include_directories(
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
+=======
+## Mark executables and/or libraries for installation
+# install(TARGETS raspimouse_ros raspimouse_ros_node
+#   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+>>>>>>> origin/master
 # )
 
 ## Mark cpp header files for installation
@@ -196,7 +287,11 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
+<<<<<<< HEAD
 # catkin_add_gtest(${PROJECT_NAME}-test test/test_pimouse_ros.cpp)
+=======
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_raspimouse_ros.cpp)
+>>>>>>> origin/master
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
